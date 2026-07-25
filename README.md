@@ -50,7 +50,7 @@ GitHub:
 https://github.com/sadhukhantithi3-bit
 
 LinkedIn:
-(Add your LinkedIn profile link)
+https://www.linkedin.com/in/teethi-sadhukhan-812557379 
 
 ## ⭐ Project Highlights
 
@@ -60,3 +60,5 @@ LinkedIn:
 - Machine Learning forecasting
 - AI-generated business insights
 - Professional PDF report generation
+
+  Live Demo: https://aidecissionintelligence-47yprjham4jp2v2t7hssu4.streamlit.app/
