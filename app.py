@@ -63,7 +63,31 @@ if "logged_in" not in st.session_state:
 
 if not st.session_state.logged_in:
 
-    st.title("🔐 Login")
+    st.markdown("""
+<div style="
+background: linear-gradient(135deg,#0F172A,#1E3A8A);
+padding:35px;
+border-radius:20px;
+color:white;
+text-align:center;
+margin-bottom:25px;">
+
+<h1 style="color:white;">🤖 AI Decision Intelligence Platform</h1>
+
+<p style="font-size:18px;">
+Welcome back! Login to access your AI-powered data analytics workspace.
+</p>
+
+<hr>
+
+<h3 style="color:#38BDF8;">🚀 Analyze • Visualize • Predict</h3>
+
+
+
+</div>
+""", unsafe_allow_html=True)
+
+    st.subheader("🔐 User Login")
 
     username = st.text_input("Username")
 
@@ -83,8 +107,94 @@ if not st.session_state.logged_in:
             st.error("Invalid Username or Password")
 
     st.stop()
-st.title("🤖 AI Decision Intelligence Platform")
-st.write("Welcome! Upload a CSV file to begin analysis.")
+st.markdown("""
+<div style="
+background: linear-gradient(135deg,#0F172A,#1E3A8A);
+padding:35px;
+border-radius:20px;
+color:white;
+margin-bottom:25px;
+box-shadow:0px 8px 20px rgba(0,0,0,0.3);">
+
+<h1 style="text-align:center;color:white;">
+🤖 AI Decision Intelligence Platform
+</h1>
+
+<p style="text-align:center;font-size:18px;">
+Transform your CSV & Excel data into powerful business insights with AI, Machine Learning and Interactive Analytics.
+</p>
+
+<hr>
+
+<h2 style="text-align:center;color:#38BDF8;">
+🚀 Everything You Need In One Platform
+</h2>
+
+<div style="display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:12px;
+margin-top:20px;">
+
+<div style="background:#1E293B;padding:15px;border-radius:12px;">
+📂 CSV & Excel Upload
+</div>
+
+<div style="background:#1E293B;padding:15px;border-radius:12px;">
+🧹 Automatic Data Cleaning
+</div>
+
+<div style="background:#1E293B;padding:15px;border-radius:12px;">
+📊 KPI Dashboard
+</div>
+
+<div style="background:#1E293B;padding:15px;border-radius:12px;">
+📈 Interactive Charts
+</div>
+
+<div style="background:#1E293B;padding:15px;border-radius:12px;">
+📉 Advanced Visualizations
+</div>
+
+<div style="background:#1E293B;padding:15px;border-radius:12px;">
+💡 AI Business Insights
+</div>
+
+<div style="background:#1E293B;padding:15px;border-radius:12px;">
+🤖 Gemini AI Assistant
+</div>
+
+<div style="background:#1E293B;padding:15px;border-radius:12px;">
+🔮 Sales Forecasting
+</div>
+
+<div style="background:#1E293B;padding:15px;border-radius:12px;">
+🚨 AI Anomaly Detection
+</div>
+
+<div style="background:#1E293B;padding:15px;border-radius:12px;">
+📥 Download Cleaned Dataset
+</div>
+
+<div style="background:#1E293B;padding:15px;border-radius:12px;">
+📄 AI PDF Report
+</div>
+
+<div style="background:#1E293B;padding:15px;border-radius:12px;">
+⚡ Fast & Interactive Dashboard
+</div>
+
+</div>
+
+<hr>
+
+<h3 style="color:#22C55E;text-align:center;">
+👇 Upload your CSV or Excel dataset below to get started
+</h3>
+
+</div>
+""", unsafe_allow_html=True)
+
+st.success("📂 Supported Formats: CSV (.csv) | Excel (.xlsx) | Excel (.xls)")
 st.sidebar.title("Navigation")
 
 if st.sidebar.button("Logout"):
@@ -92,12 +202,15 @@ if st.sidebar.button("Logout"):
     st.rerun()
 
 uploaded_file = st.file_uploader(
-    "Upload CSV File",
-    type=["csv"]
+    "Upload CSV or Excel File",
+    type=["csv", "xlsx", "xls"]
 )
 
 if uploaded_file is not None:
-    df = pd.read_csv(uploaded_file, encoding="latin1")
+    if uploaded_file.name.endswith(".csv"):
+        df = pd.read_csv(uploaded_file, encoding="latin1")
+    else:
+        df = pd.read_excel(uploaded_file)
 
     st.success("✅ File Uploaded Successfully!")
 
