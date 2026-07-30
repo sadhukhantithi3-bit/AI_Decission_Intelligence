@@ -7,6 +7,7 @@ import numpy as np
 from sklearn.ensemble import IsolationForest
 from reportlab.platypus import SimpleDocTemplate, Paragraph
 from reportlab.lib.styles import getSampleStyleSheet
+from components.footer import add_footer
 LOGIN_USERNAME = "admin"
 LOGIN_PASSWORD = "1234"
 st.set_page_config(
@@ -336,24 +337,24 @@ if uploaded_file is not None:
             st.plotly_chart(fig, use_container_width=True)
 
 
-        st.subheader("🤖 AI Insights")
+    st.subheader("🤖 AI Insights")
 
     numeric_cols = df.select_dtypes(include="number").columns
 
     for col in numeric_cols:
-     st.write(f"### 📌 {col}")
+        st.write(f"### 📌 {col}")
 
-    st.write(f"Highest Value : {df[col].max()}")
+        st.write(f"Highest Value : {df[col].max()}")
 
-    st.write(f"Lowest Value : {df[col].min()}")
+        st.write(f"Lowest Value : {df[col].min()}")
 
-    st.write(f"Average : {round(df[col].mean(),2)}")
+        st.write(f"Average : {round(df[col].mean(),2)}")
 
-    if df[col].mean() > df[col].median():
-        st.success(f"{col} is positively skewed.")
+        if df[col].mean() > df[col].median():
+         st.success(f"{col} is positively skewed.")
 
-    else:
-        st.warning(f"{col} is negatively skewed.")
+        else:
+         st.warning(f"{col} is negatively skewed.")
 
     st.subheader("🤖 AI Business Assistant")
 
@@ -497,3 +498,4 @@ if uploaded_file is not None:
             mime="application/pdf",
             key="pdf_download"
         )
+    add_footer()
