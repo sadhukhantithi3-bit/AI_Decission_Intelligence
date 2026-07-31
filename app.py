@@ -8,6 +8,8 @@ from sklearn.ensemble import IsolationForest
 from reportlab.platypus import SimpleDocTemplate, Paragraph
 from reportlab.lib.styles import getSampleStyleSheet
 from components.footer import add_footer
+from modules.auto_dashboard import auto_dashboard
+from modules.smart_charts import smart_charts
 LOGIN_USERNAME = "admin"
 LOGIN_PASSWORD = "1234"
 st.set_page_config(
@@ -274,6 +276,8 @@ if uploaded_file is not None:
     col2.metric("Average", round(df[selected_col].mean(), 2))
     col3.metric("Maximum", round(df[selected_col].max(), 2))
     col4.metric("Minimum", round(df[selected_col].min(), 2))
+    #auto_dashboard(df)
+    smart_charts(df)
     st.subheader("📊 Interactive Charts")
 
     numeric_cols = df.select_dtypes(include="number").columns
